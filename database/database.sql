@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2017 at 04:59 AM
+-- Generation Time: Nov 13, 2017 at 05:06 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -422,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   PRIMARY KEY (`umeta_id`),
   KEY `user_id` (`user_id`),
   KEY `meta_key` (`meta_key`(191))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -444,7 +444,46 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (13, 1, 'dismissed_wp_pointers', ''),
 (14, 1, 'show_welcome_panel', '1'),
 (15, 1, 'session_tokens', 'a:1:{s:64:"075a46c4bad4f85462ee868f18ad58c70328074408a3df55b138a9e301bb9346";a:4:{s:10:"expiration";i:1510717667;s:2:"ip";s:3:"::1";s:2:"ua";s:113:"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36";s:5:"login";i:1510544867;}}'),
-(16, 1, 'wp_dashboard_quick_press_last_post_id', '3');
+(16, 1, 'wp_dashboard_quick_press_last_post_id', '3'),
+(17, 5, 'nickname', 'cotk'),
+(18, 5, 'first_name', ''),
+(19, 5, 'last_name', ''),
+(20, 5, 'description', ''),
+(21, 5, 'rich_editing', 'true'),
+(22, 5, 'comment_shortcuts', 'false'),
+(23, 5, 'admin_color', 'fresh'),
+(24, 5, 'use_ssl', '0'),
+(25, 5, 'show_admin_bar_front', 'true'),
+(26, 5, 'locale', ''),
+(27, 5, 'wp_capabilities', 'a:1:{s:6:"editor";b:1;}'),
+(28, 5, 'wp_user_level', '7'),
+(29, 5, 'dismissed_wp_pointers', ''),
+(30, 6, 'nickname', 'tuannt'),
+(31, 6, 'first_name', ''),
+(32, 6, 'last_name', ''),
+(33, 6, 'description', ''),
+(34, 6, 'rich_editing', 'true'),
+(35, 6, 'comment_shortcuts', 'false'),
+(36, 6, 'admin_color', 'fresh'),
+(37, 6, 'use_ssl', '0'),
+(38, 6, 'show_admin_bar_front', 'true'),
+(39, 6, 'locale', ''),
+(40, 6, 'wp_capabilities', 'a:1:{s:6:"editor";b:1;}'),
+(41, 6, 'wp_user_level', '7'),
+(42, 6, 'dismissed_wp_pointers', ''),
+(43, 7, 'nickname', 'nuth'),
+(44, 7, 'first_name', ''),
+(45, 7, 'last_name', ''),
+(46, 7, 'description', ''),
+(47, 7, 'rich_editing', 'true'),
+(48, 7, 'comment_shortcuts', 'false'),
+(49, 7, 'admin_color', 'fresh'),
+(50, 7, 'use_ssl', '0'),
+(51, 7, 'show_admin_bar_front', 'true'),
+(52, 7, 'locale', ''),
+(53, 7, 'wp_capabilities', 'a:1:{s:10:"subscriber";b:1;}'),
+(54, 7, 'wp_user_level', '0'),
+(55, 7, 'dismissed_wp_pointers', '');
 
 -- --------------------------------------------------------
 
@@ -468,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`),
   KEY `user_email` (`user_email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `wp_users`
@@ -476,9 +515,9 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'admin', '$P$BVgQZ0iSjUgZPSZWUwv32g2s74SY8W/', 'admin', 'please2996@gmail.com', '', '2017-11-13 03:43:53', '', 0, 'admin'),
-(2, 'kimco', '139821bf5b822d44ee4c506c540e108e', 'kimco', '', '', '0000-00-00 00:00:00', '', 0, ''),
-(3, 'd6b8cc42803ea100735c719f1d7f5e11', '123456', 'tuan', '', '', '0000-00-00 00:00:00', '', 0, ''),
-(4, 'nu', 'e10adc3949ba59abbe56e057f20f883e', 'nu', '', '', '0000-00-00 00:00:00', '', 0, '');
+(5, 'cotk', '$P$BlmjilfADnQVWi2E/V292vbcgcnp8B.', 'cotk', 'kimco2404@gmail.com', '', '2017-11-13 04:03:31', '1510545812:$P$B/0ODrEROTO2sgjr3l9xvcW3TjkTcR/', 0, 'cotk'),
+(6, 'tuannt', '$P$B9.BHT3Frg/3c8GK0O3hlONA1EeRb7.', 'tuannt', 'calvinnguyen.tt@gmail.com', '', '2017-11-13 04:04:28', '1510545870:$P$BkPF3sCjDAiNtz9xYDWd8EHqk3GyJe/', 0, 'tuannt'),
+(7, 'nuth', '$P$BMfo1wLmBUdpFT0PF27TfuDMFIdthz/', 'nuth', 'nu123@gmail.com', '', '2017-11-13 04:04:51', '1510545892:$P$BiF/iLBni1VgkK8GvPkgf7p2a5ST3l/', 0, 'nuth');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
