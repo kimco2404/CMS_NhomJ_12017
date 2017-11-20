@@ -275,6 +275,14 @@ function wp_dashboard_right_now() {
 		$text = sprintf( _n( '%s Comment', '%s Comments', $num_comm->approved ), number_format_i18n( $num_comm->approved ) );
 		?>
 		<li class="comment-count"><a href="edit-comments.php"><?php echo $text; ?></a></li>
+                <?php
+                   $num_users = count_users();
+                   $total_users=$num_users['total_users'];
+                   $text_users=($total_users>1)?' Users':' User'        
+                ?>
+            
+		<li class="user-count"><a href="user.php"><?php echo  $total_users . $text_users; ?></a></li>
+           
 		<?php
 		$moderated_comments_count_i18n = number_format_i18n( $num_comm->moderated );
 		/* translators: Number of comments in moderation */
@@ -288,8 +296,10 @@ function wp_dashboard_right_now() {
 			}
 		?>"><a href="edit-comments.php?comment_status=moderated" aria-label="<?php esc_attr_e( $aria_label ); ?>"><?php echo $text; ?></a></li>
 		<?php
+                
 	}
-
+        
+        
 	/**
 	 * Filters the array of extra elements to list in the 'At a Glance'
 	 * dashboard widget.

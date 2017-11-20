@@ -187,7 +187,7 @@ class WP_Users_List_Table extends WP_List_Table {
 		$total_users = $users_of_blog['total_users'];
 		$avail_roles =& $users_of_blog['avail_roles'];
 		unset($users_of_blog);
-
+                
 		$class = empty($role) ? ' class="current"' : '';
 		$role_links = array();
 		$role_links['all'] = "<a href='$url'$class>" . sprintf( _nx( 'All <span class="count">(%s)</span>', 'All <span class="count">(%s)</span>', $total_users, 'users' ), number_format_i18n( $total_users ) ) . '</a>';
