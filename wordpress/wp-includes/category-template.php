@@ -73,6 +73,9 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
  */
 function get_the_category( $id = false ) {
 	$categories = get_the_terms( $id, 'category' );
+        
+       
+     
 	if ( ! $categories || is_wp_error( $categories ) )
 		$categories = array();
 
@@ -522,7 +525,8 @@ function wp_list_categories( $args = '' ) {
 		'style'               => 'list',
 		'taxonomy'            => 'category',
 		'title_li'            => __( 'Categories' ),
-		'use_desc_for_title'  => 1,
+		'use_desc_for_title'  => 4,
+                'number'  => 3,
 	);
 
 	$r = wp_parse_args( $args, $defaults );
