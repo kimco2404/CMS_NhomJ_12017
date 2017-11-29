@@ -10,9 +10,10 @@
 
 global $twentyseventeencounter;
 
+
 ?>
 
-<article id="panel<?php echo $twentyseventeencounter; ?>" <?php post_class( 'twentyseventeen-panel ' ); ?> >
+<article class="col-xs-6" id="panel<?php echo $twentyseventeencounter; ?>" <?php post_class( 'twentyseventeen-panel ' ); ?> >
 
 	<?php if ( has_post_thumbnail() ) :
 		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'twentyseventeen-featured-image' );
@@ -47,6 +48,9 @@ global $twentyseventeencounter;
 			</div><!-- .entry-content -->
 
 			<?php
+                        var_dump($twentyseventeencounter);
+die();
+
 			// Show recent blog posts if is blog posts page (Note that get_option returns a string, so we're casting the result as an int).
 			if ( get_the_ID() === (int) get_option( 'page_for_posts' )  ) : ?>
 
@@ -77,3 +81,4 @@ global $twentyseventeencounter;
 	</div><!-- .panel-content -->
 
 </article><!-- #post-## -->
+

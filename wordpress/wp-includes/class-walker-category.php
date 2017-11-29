@@ -95,6 +95,8 @@ class Walker_Category extends Walker {
 	 * @param array  $args     Optional. An array of arguments. See wp_list_categories(). Default empty array.
 	 * @param int    $id       Optional. ID of the current category. Default 0.
 	 */
+                               
+
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		/** This filter is documented in wp-includes/category-template.php */
 		$cat_name = apply_filters(
@@ -158,9 +160,12 @@ class Walker_Category extends Walker {
 		if ( ! empty( $args['show_count'] ) ) {
 			$link .= ' (' . number_format_i18n( $category->count ) . ')';
 		}
+                
+            
 		if ( 'list' == $args['style'] ) {
 			$output .= "\t<li";
 			$css_classes = array(
+                            
 				'cat-item',
 				'cat-item-' . $category->term_id,
 			);

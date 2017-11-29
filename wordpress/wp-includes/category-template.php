@@ -56,6 +56,7 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
 	);
 
 	return get_term_parents_list( $id, 'category', $args );
+     
 }
 
 /**
@@ -73,8 +74,7 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
  */
 function get_the_category( $id = false ) {
 	$categories = get_the_terms( $id, 'category' );
-        
-       
+    
      
 	if ( ! $categories || is_wp_error( $categories ) )
 		$categories = array();
@@ -105,9 +105,12 @@ function get_the_category( $id = false ) {
  * @param int $cat_ID Category ID.
  * @return string|WP_Error Category name on success, WP_Error on failure.
  */
+
+       
 function get_the_category_by_ID( $cat_ID ) {
 	$cat_ID = (int) $cat_ID;
 	$category = get_term( $cat_ID, 'category' );
+   
 
 	if ( is_wp_error( $category ) )
 		return $category;
@@ -128,12 +131,15 @@ function get_the_category_by_ID( $cat_ID ) {
  * @param int $post_id Optional. Post ID to retrieve categories.
  * @return string
  */
+
+     
 function get_the_category_list( $separator = '', $parents = '', $post_id = false ) {
 	global $wp_rewrite;
 	if ( ! is_object_in_taxonomy( get_post_type( $post_id ), 'category' ) ) {
 		/** This filter is documented in wp-includes/category-template.php */
 		return apply_filters( 'the_category', '', $separator, $parents );
 	}
+      
 
 	/**
 	 * Filters the categories before building the category list.
@@ -145,6 +151,7 @@ function get_the_category_list( $separator = '', $parents = '', $post_id = false
 	 *                             current post in the loop.
 	 */
 	$categories = apply_filters( 'the_category_list', get_the_category( $post_id ), $post_id );
+        
 
 	if ( empty( $categories ) ) {
 		/** This filter is documented in wp-includes/category-template.php */
@@ -199,6 +206,7 @@ function get_the_category_list( $separator = '', $parents = '', $post_id = false
 			}
 			++$i;
 		}
+  
 	}
 
 	/**
@@ -232,11 +240,13 @@ function get_the_category_list( $separator = '', $parents = '', $post_id = false
  * @param int|object $post Optional. Post to check instead of the current post. (since 2.7.0)
  * @return bool True if the current post is in any of the given categories.
  */
+ 
 function in_category( $category, $post = null ) {
 	if ( empty( $category ) )
 		return false;
 
 	return has_category( $category, $post );
+       
 }
 
 /**
@@ -252,6 +262,7 @@ function in_category( $category, $post = null ) {
 function the_category( $separator = '', $parents = '', $post_id = false ) {
 	echo get_the_category_list( $separator, $parents, $post_id );
 }
+       
 
 /**
  * Retrieve category description.
@@ -264,7 +275,7 @@ function the_category( $separator = '', $parents = '', $post_id = false ) {
 function category_description( $category = 0 ) {
 	return term_description( $category, 'category' );
 }
-
+;
 /**
  * Display or retrieve the HTML dropdown list of categories.
  *
@@ -344,7 +355,7 @@ function wp_dropdown_categories( $args = '' ) {
 	);
 
 	$defaults['selected'] = ( is_category() ) ? get_query_var( 'cat' ) : 0;
-
+        
 	// Back compat.
 	if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
 		_deprecated_argument( __FUNCTION__, '3.0.0',
@@ -526,7 +537,7 @@ function wp_list_categories( $args = '' ) {
 		'taxonomy'            => 'category',
 		'title_li'            => __( 'Categories' ),
 		'use_desc_for_title'  => 4,
-                'number'  => 3,
+               // 'number'  => 3,
 	);
 
 	$r = wp_parse_args( $args, $defaults );
@@ -561,7 +572,7 @@ function wp_list_categories( $args = '' ) {
 	$show_option_none = $r['show_option_none'];
 
 	$categories = get_categories( $r );
-
+    
 	$output = '';
 	if ( $r['title_li'] && 'list' == $r['style'] && ( ! empty( $categories ) || ! $r['hide_title_if_empty'] ) ) {
 		$output = '<li class="' . esc_attr( $r['class'] ) . '">' . $r['title_li'] . '<ul>';
@@ -639,6 +650,7 @@ function wp_list_categories( $args = '' ) {
 	 */
 	$html = apply_filters( 'wp_list_categories', $output, $args );
 
+   
 	if ( $r['echo'] ) {
 		echo $html;
 	} else {
@@ -1038,6 +1050,28 @@ function walk_category_tree() {
 	} else {
 		$walker = $args[2]['walker'];
 	}
+        
+        $categories = [];
+    
+        
+        foreach ($args[0] as $category){
+            if(count($categories) < 3 && $category->parent == 0 ){
+                $categories[] = $category;
+            }
+        }
+        
+        $sub = [];
+        foreach($categories as $parent){
+            $index = 0;
+            foreach($args[0] as $category){
+                if($index < 3 && $category->parent == $parent->term_id){
+                    $index++;
+                    $sub[] = $category;
+                }
+            }
+        }
+        $args[0] = array_merge($categories,$sub);
+        
 	return call_user_func_array( array( $walker, 'walk' ), $args );
 }
 
