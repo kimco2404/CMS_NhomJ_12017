@@ -977,6 +977,7 @@ final class WP_Screen {
 
 		$wrapper_start = $wrapper_end = $form_start = $form_end = '';
 
+
 		// Output optional wrapper.
 		if ( $options['wrap'] ) {
 			$wrapper_start = '<div id="screen-options-wrap" class="hidden" tabindex="-1" aria-label="' . esc_attr__( 'Screen Options Tab' ) . '">';
@@ -987,9 +988,12 @@ final class WP_Screen {
 		if ( 'widgets' !== $this->base ) {
 			$form_start = "\n<form id='adv-settings' method='post'>\n";
 			$form_end = "\n" . wp_nonce_field( 'screen-options-nonce', 'screenoptionnonce', false, false ) . "\n</form>\n";
+
 		}
 
 		echo $wrapper_start . $form_start;
+
+                               
 
 		$this->render_meta_boxes_preferences();
 		$this->render_list_table_columns_preferences();
@@ -997,6 +1001,7 @@ final class WP_Screen {
 		$this->render_per_page_options();
 		$this->render_view_mode();
 		echo $this->_screen_settings;
+
 
 		/**
 		 * Filters whether to show the Screen Options submit button.
@@ -1009,6 +1014,7 @@ final class WP_Screen {
 		 */
 		$show_button = apply_filters( 'screen_options_show_submit', false, $this );
 
+                               
 		if ( $show_button ) {
 			submit_button( __( 'Apply' ), 'primary', 'screen-options-apply', true );
 		}
@@ -1134,6 +1140,66 @@ final class WP_Screen {
 	 * @since 3.3.0
 	 */
 	public function render_per_page_options() {
+		if ( null === $this->get_option( 'per_page' ) ) {
+			return;
+		}
+
+		$per_page_label = $this->get_option( 'per_page', 'label' );
+
+		if ( null === $per_page_label ) {
+			$per_page_label = __( 'Number of items per page:' );
+		}
+
+		$option = $this->get_option( 'per_page', 'option' );
+		if ( ! $option ) {
+			$option = str_replace( '-', '_', "{$this->id}_per_page" );
+		}
+
+		$per_page = (int) get_user_option( $option );
+		if ( empty( $per_page ) || $per_page < 1 ) {
+			$per_page = $this->get_option( 'per_page', 'default' );
+			if ( ! $per_page ) {
+				$per_page = 20;
+			}
+		}
+
+		if ( 'edit_comments_per_page' == $option ) {
+			$comment_status = isset( $_REQUEST['comment_status'] ) ? $_REQUEST['comment_status'] : 'all';
+
+			/** This filter is documented in wp-admin/includes/class-wp-comments-list-table.php */
+			$per_page = apply_filters( 'comments_per_page', $per_page, $comment_status );
+		} elseif ( 'categories_per_page' == $option ) {
+			/** This filter is documented in wp-admin/includes/class-wp-terms-list-table.php */
+			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
+		} else {
+			/** This filter is documented in wp-admin/includes/class-wp-list-table.php */
+			$per_page = apply_filters( "{$option}", $per_page );
+		}
+
+		// Back compat
+		if ( isset( $this->post_type ) ) {
+			/** This filter is documented in wp-admin/includes/post.php */
+			$per_page = apply_filters( 'edit_posts_per_page', $per_page, $this->post_type );
+		}
+
+		// This needs a submit button
+		add_filter( 'screen_options_show_submit', '__return_true' );
+
+		?>
+		<fieldset class="screen-options">
+		<legend><?php _e( 'Pagination' ); ?></legend>
+			<?php if ( $per_page_label ) : ?>
+				<label for="<?php echo esc_attr( $option ); ?>"><?php echo $per_page_label; ?></label>
+				<input type="number" step="1" min="1" max="999" class="screen-per-page" name="wp_screen_options[value]"
+					id="<?php echo esc_attr( $option ); ?>" maxlength="3"
+					value="<?php echo esc_attr( $per_page ); ?>" />
+			<?php endif; ?>
+				<input type="hidden" name="wp_screen_options[option]" value="<?php echo esc_attr( $option ); ?>" />
+		</fieldset>
+		<?php
+	}
+        
+        public function render_per_post_options() {
 		if ( null === $this->get_option( 'per_page' ) ) {
 			return;
 		}

@@ -111,12 +111,14 @@ foreach ( array_merge( $builtin, $types ) as $ptype ) {
 	}
 
 	$menu_class = 'menu-top menu-icon-' . $ptype_for_id;
+       
 	// 'post' special case
 	if ( 'post' === $ptype ) {
 		$menu_class .= ' open-if-no-js';
 		$ptype_file = "edit.php";
 		$post_new_file = "post-new.php";
 		$edit_tags_file = "edit-tags.php?taxonomy=%s";
+
 	} else {
 		$ptype_file = "edit.php?post_type=$ptype";
 		$post_new_file = "post-new.php?post_type=$ptype";
@@ -125,6 +127,8 @@ foreach ( array_merge( $builtin, $types ) as $ptype ) {
 
 	if ( in_array( $ptype, $builtin ) ) {
 		$ptype_menu_id = 'menu-' . $ptype_for_id . 's';
+     
+
 	} else {
 		$ptype_menu_id = 'menu-posts-' . $ptype_for_id;
 	}
@@ -137,6 +141,7 @@ foreach ( array_merge( $builtin, $types ) as $ptype ) {
 		$ptype_menu_position++;
 
 	$menu[$ptype_menu_position] = array( esc_attr( $ptype_obj->labels->menu_name ), $ptype_obj->cap->edit_posts, $ptype_file, '', $menu_class, $ptype_menu_id, $menu_icon );
+
 	$submenu[ $ptype_file ][5]  = array( $ptype_obj->labels->all_items, $ptype_obj->cap->edit_posts,  $ptype_file );
 	$submenu[ $ptype_file ][10]  = array( $ptype_obj->labels->add_new, $ptype_obj->cap->create_posts, $post_new_file );
 
@@ -151,6 +156,7 @@ foreach ( array_merge( $builtin, $types ) as $ptype ) {
 unset( $ptype, $ptype_obj, $ptype_for_id, $ptype_menu_position, $menu_icon, $i, $tax, $post_new_file );
 
 $menu[59] = array( '', 'read', 'separator2', '', 'wp-menu-separator' );
+    
 
 $appearance_cap = current_user_can( 'switch_themes') ? 'switch_themes' : 'edit_theme_options';
 
@@ -175,8 +181,9 @@ $menu[60] = array( __( 'Appearance' ), $appearance_cap, 'themes.php', '', 'menu-
 	}
 
 	unset( $customize_url );
-
+       
 unset( $appearance_cap );
+       
 
 // Add 'Editor' to the bottom of the Appearance menu.
 if ( ! is_multisite() ) {

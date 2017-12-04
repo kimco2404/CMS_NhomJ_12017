@@ -22,6 +22,7 @@ function get_column_headers( $screen ) {
 
 	static $column_headers = array();
 
+
 	if ( ! isset( $column_headers[ $screen->id ] ) ) {
 
 		/**
@@ -38,8 +39,9 @@ function get_column_headers( $screen ) {
 		 */
 		$column_headers[ $screen->id ] = apply_filters( "manage_{$screen->id}_columns", array() );
 	}
-
 	return $column_headers[ $screen->id ];
+                           
+
 }
 
 /**

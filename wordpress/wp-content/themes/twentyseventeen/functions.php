@@ -222,7 +222,40 @@ add_action( 'after_setup_theme', 'twentyseventeen_setup' );
  * Priority 0 to make it available to lower priority callbacks.
  *
  * @global int $content_width
+ * 
  */
+
+add_action( 'init', 'create_services_post_type' );
+
+function create_services_post_type() {
+    $args = array(
+                  'description' => 'Services post type',
+                  'show_ui' => true,
+                  'menu_position' => 4,
+                  'exclude_from_search' => true,
+                  'labels' => array(
+                                    'name'=> 'Services',
+                                    'singular_name' => 'Service',
+                                    'add_new' => 'Add New Service',
+                                    'add_new_item' => 'Add New Service',
+                                    'edit' => 'Edit Services',
+                                    'edit_item' => 'Edit Service',
+                                    'new-item' => 'New Service',
+                                    'view' => 'View Services',
+                                    'view_item' => 'View Service',
+                                    'search_items' => 'Search Services',
+                                    'not_found' => 'No Services Found',
+                                    'not_found_in_trash' => 'No Services Found in Trash',
+                                    'parent' => 'Parent Service'
+                                   ),
+                 'public' => true,
+                 'capability_type' => 'post',
+                 'hierarchical' => false,
+                 'rewrite' => true,
+                 'supports' => array('title', 'editor', 'thumbnail', 'comments')
+                 );
+    register_post_type( ' widgets_init' , $args );
+}
 function twentyseventeen_content_width() {
 
 	$content_width = $GLOBALS['content_width'];
