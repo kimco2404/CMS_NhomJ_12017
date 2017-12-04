@@ -2993,6 +2993,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 		'guid' => '',
 		'import_id' => 0,
 		'context' => '',
+		'post_overview' => '',
 	);
 
 	$postarr = wp_parse_args($postarr, $defaults);
@@ -3030,6 +3031,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_title = $postarr['post_title'];
 	$post_content = $postarr['post_content'];
 	$post_excerpt = $postarr['post_excerpt'];
+        $post_overview = $postarr['post_overview'];
 	if ( isset( $postarr['post_name'] ) ) {
 		$post_name = $postarr['post_name'];
 	} elseif ( $update ) {
@@ -3038,10 +3040,11 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	}
 
 	$maybe_empty = 'attachment' !== $post_type
-		&& ! $post_content && ! $post_title && ! $post_excerpt
+		&& ! $post_content && ! $post_title && ! $post_excerpt && $post_overview
 		&& post_type_supports( $post_type, 'editor' )
 		&& post_type_supports( $post_type, 'title' )
-		&& post_type_supports( $post_type, 'excerpt' );
+		&& post_type_supports( $post_type, 'excerpt' )
+                ;
 
 	/**
 	 * Filters whether the post should be considered "empty".
@@ -3251,7 +3254,7 @@ function wp_insert_post( $postarr, $wp_error = false ) {
 	$post_mime_type = isset( $postarr['post_mime_type'] ) ? $postarr['post_mime_type'] : '';
 
 	// Expected_slashed (everything!).
-	$data = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_password', 'post_name', 'to_ping', 'pinged', 'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
+	$data = compact( 'post_author', 'post_overview','post_date', 'post_date_gmt', 'post_content', 'post_content_filtered', 'post_title', 'post_excerpt', 'post_status', 'post_type', 'comment_status', 'ping_status', 'post_password', 'post_name', 'to_ping', 'pinged', 'post_modified', 'post_modified_gmt', 'post_parent', 'menu_order', 'post_mime_type', 'guid' );
 
 	$emoji_fields = array( 'post_title', 'post_content', 'post_excerpt' );
 

@@ -267,7 +267,7 @@ if ( $thumbnail_support && current_user_can( 'upload_files' ) )
 	add_meta_box('postimagediv', esc_html( $post_type_object->labels->featured_image ), 'post_thumbnail_meta_box', null, 'side', 'low');
 
 if ( post_type_supports($post_type, 'excerpt') )
-	add_meta_box('postexcerpt', __('Overview'), 'post_excerpt_meta_box', null, 'normal', 'core');
+	add_meta_box('postexcerpt', __('excerpt'), 'post_excerpt_meta_box', null, 'normal', 'core');
 
 if ( post_type_supports($post_type, 'trackbacks') )
 	add_meta_box('trackbacksdiv', __('Send Trackbacks'), 'post_trackback_meta_box', null, 'normal', 'core');
@@ -618,7 +618,12 @@ do_action( 'edit_form_after_title', $post );
 if ( post_type_supports($post_type, 'editor') ) {
 ?>
 <div id="postdivrich" class="postarea<?php if ( $_wp_editor_expand ) { echo ' wp-editor-expand'; } ?>">
-
+<div>
+       <div style="font-size: 15px">Overview</div>
+       <textarea style="width: 100%" rows="5" name="post_overview">
+           <?php echo esc_attr($post ->post_overview)?>
+       </textarea> 
+   </div>
 <?php wp_editor( $post->post_content, 'content', array(
 	'_content_editor_dfw' => $_content_editor_dfw,
 	'drag_drop_upload' => true,
