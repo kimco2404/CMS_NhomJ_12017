@@ -1,0 +1,273 @@
+a,
+a:hover {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.m3 .m3-container {
+  margin: 0 auto;
+  max-width: 93%;
+}
+.m3 .m3-container .m3-content {
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.2);
+}
+.m3 .m3-container .m3-content .m3-content-menu {
+  transition: all 1s;
+  padding-top: 60px;
+  text-align: center;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-icon {
+  font-family: theme;
+  color: #cb7152;
+  font-size: 60px;
+  margin: 16px 0;
+}
+.m3 .m3-container .m3-content .m3-content-menu h3 {
+  color: #000;
+  font: normal 70px/50px Libre Baskerville;
+}
+.m3 .m3-container .m3-content .m3-content-menu h5 {
+  color: #cb7152;
+  font: normal 17px/22px Handlee;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+}
+.m3 .m3-container .m3-content .m3-content-menu h5:before,
+.m3 .m3-container .m3-content .m3-content-menu h5:after {
+  display: inline-block;
+  width: auto;
+  height: 15px;
+  content: "~";
+  font-size: 1.1em;
+  padding: 0px 5px;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food {
+  padding: 0 10px;
+  text-align: start;
+  padding: 10px;
+  cursor: pointer;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food h2 {
+  color: #cb7152;
+  font: normal 35px/50px Libre Baskerville;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food h3 {
+  font-weight: 400;
+  font-family: Varela Round;
+  padding-bottom: 12px;
+  padding-right: 80px;
+  position: relative;
+  margin-bottom: 2px;
+  transition: all .3s;
+  font-size: 16px;
+  color: #000;
+  line-height: 130%;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food h3:hover {
+  color: #cb7152;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food h3:before {
+  display: block;
+  line-height: 1em;
+  font-size: 0.4em;
+  letter-spacing: 4px;
+  color: #6b6b6b;
+  content: "...................................................................................................................................................................................................................................................";
+  width: 100%;
+  overflow: hidden;
+  height: 10px;
+  bottom: 0px;
+  position: absolute;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food .price {
+  font-family: Varela Round;
+  background: transparent;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 0px;
+  color: #cb7152;
+}
+.m3 .m3-container .m3-content .m3-content-menu .m3-content-menu-food .m3-content-menu-food-description {
+  font-style: normal;
+  font-size: 12px;
+  color: #6b6b6b;
+  font-family: Varela Round;
+  line-height: 140%;
+}
+.m3 .m3-container .m3-content .m3-content-event {
+  transition: all 1s;
+  min-height: 610px;
+  padding-top: 60px;
+  text-align: center;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-icon {
+  color: #cb7152;
+  font-size: 60px;
+  font-family: theme;
+}
+.m3 .m3-container .m3-content .m3-content-event h3 {
+  font: normal 40px/50px Libre Baskerville;
+}
+.m3 .m3-container .m3-content .m3-content-event h5 {
+  color: #cb7152;
+  font: normal 14px/22px Handlee;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+}
+.m3 .m3-container .m3-content .m3-content-event h5:before,
+.m3 .m3-container .m3-content .m3-content-event h5:after {
+  display: inline-block;
+  width: auto;
+  height: 15px;
+  content: "~";
+  font-size: 1.1em;
+  padding: 0px 5px;
+}
+.m3 .m3-container .m3-content .m3-content-event p {
+  padding: 0 10px;
+  font: normal 16px/24px Varela Round;
+  margin: 1em 0;
+}
+.m3 .m3-container .m3-content .m3-content-event h4 {
+  font: normal 24px/32px Libre Baskerville;
+}
+.m3 .m3-container .m3-content .m3-content-event h6 {
+  font: normal 11px/12px Varela Round;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn {
+  display: inline-block;
+  margin-top: 50px;
+  font: normal 16px/24px Varela Round;
+  color: #2c2c2c;
+  margin-bottom: 0;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn a {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10em;
+  border: 1px solid #cb7152;
+  overflow: hidden;
+  transition: color .3s ease-out, border .3s ease-out, background .3s ease-out !important;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn a:after {
+  background: #cb7152;
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s ease-out !important;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn span {
+  padding: 10px 24px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  color: #000;
+  font-size: 14px;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn span:before {
+  color: #fff;
+  position: absolute;
+  content: "Book a table!";
+  transform: translateY(0);
+  top: 100%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 24px;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn a:after {
+  background: #cb7152;
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+.m3 .m3-container .m3-content .m3-content-event .m3-content-event-btn a:hover .span-hover {
+  transform: translateY(-100%);
+  transition: all 0.3s;
+}
+.m3 .m3-container .m3-content .m3-content-event p:hover a:after {
+  height: 100%;
+}
+.m3 .m3-container .m3-content .m3-content-event:before {
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  content: "";
+  background-color: #dfdfdf;
+}
+.m3 .m3-container .m3-content .m3-content-right {
+  transition: all 1s;
+  background: url(../img/coffee-photo-2.jpg) right center / auto no-repeat scroll;
+  padding-top: 100px;
+  padding-bottom: 0.05px;
+  min-height: 610px;
+}
+.m3 .m3-container .m3-parallax {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+}
+.m3 .m3-container .m3-parallax .m3-background {
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  background-position: 50% 0%;
+  background-color: rgba(0,0,0,0);
+  background-size: auto;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+@media (max-width: 767px) {
+  .m3-content-left,
+  .m3-content-right {
+    background-position: center !important;
+    background-size: 0;
+  }
+}
+@font-face {
+  font-family: Handlee;
+  src: url(../fonts/Handlee.woff2);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Kaushan Script;
+  src: url(../fonts/Kaushan-Script.woff2);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Libre Baskerville;
+  src: url(../fonts/Libre-Baskerville.woff2);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Varela Round;
+  src: url(../fonts/Varela-Round.woff2);
+  font-weight: bold;
+}
+@font-face {
+  font-family: theme;
+  src: url(../fonts/theme-icons.ttf);
+  font-weight: bold;
+}
