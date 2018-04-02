@@ -12,6 +12,9 @@
  * * Secret keys
  * * Database table prefix
  * * ABSPATH
+ bbb
+ bhbj
+ buhbu
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php
  *
